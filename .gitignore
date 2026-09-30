@@ -1,0 +1,50 @@
+# Runtime secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+
+# Generated and user-provided data
+uploads/
+backups/
+logs/
+*.log
+
+# Java and frontend build output
+target/
+node_modules/
+dist/
+coverage/
+.pnpm-store/
+
+# IDE and operating-system files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Internal working material
+BACKLOG.md
+tmp/
+.tmp/
+.chart-data-*/
+docs/evidence/screenshots/raw/
+docs/THESIS_*.md
+docs/*audit*.md
+
+# LaTeX intermediate files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
