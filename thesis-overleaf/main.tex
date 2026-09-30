@@ -1,0 +1,504 @@
+\documentclass[12pt,a4paper,twoside,fleqn]{book}
+
+% Compile with XeLaTeX in Overleaf.
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{greek}
+\setotherlanguage{english}
+% The writing specification requires Times New Roman, 12 pt. Overleaf's
+% standard TeX installation may not contain Microsoft's proprietary font, so
+% Liberation Serif is used there as its Greek-capable, metric-compatible fallback.
+\IfFontExistsTF{Times New Roman}{%
+  \setmainfont{Times New Roman}
+  \newfontfamily\greekfont{Times New Roman}
+  \newfontfamily\englishfont{Times New Roman}
+}{%
+  \setmainfont{Liberation Serif}
+  \newfontfamily\greekfont{Liberation Serif}
+  \newfontfamily\englishfont{Liberation Serif}
+}
+% Greek-capable monospace font for technical values inside \texttt{} and listings.
+% Courier New is present on the local Windows build; DejaVu remains the
+% freely available fallback used by Overleaf.
+\IfFontExistsTF{Courier New}{%
+  \setmonofont{Courier New}
+  \newfontfamily\greekfonttt{Courier New}
+  \newfontfamily\englishfonttt{Courier New}
+}{%
+  \setmonofont{DejaVu Sans Mono}
+  \newfontfamily\greekfonttt{DejaVu Sans Mono}
+  \newfontfamily\englishfonttt{DejaVu Sans Mono}
+}
+
+\usepackage[a4paper,margin=2.5cm,headheight=15pt]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{csquotes}
+\usepackage{xurl}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+
+\onehalfspacing
+\setlength{\mathindent}{0pt}
+\setlength{\parindent}{1.2cm}
+\setlength{\parskip}{0pt}
+% Allow LaTeX a little extra flexibility before reporting text outside the
+% printable area. Long technical values use \path below so they can also
+% break safely at punctuation without becoming hyperlinks.
+\setlength{\emergencystretch}{2em}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\renewcommand{\arraystretch}{1.2}
+% Departmental guidance requires figure and table captions above the content.
+\captionsetup{position=top}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\nouppercase{\leftmark}}
+\fancyhead[LO]{\nouppercase{\rightmark}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\LARGE}
+  {\chaptername\ \thechapter}{10pt}{\LARGE}
+
+% -----------------------------------------------------------------------------
+% Thesis metadata
+% -----------------------------------------------------------------------------
+\newcommand{\ThesisTitleGreek}{Βελτιστοποίηση Υποδομών Cloud για Mission-Critical Εφαρμογές}
+\newcommand{\ThesisTitleEnglish}{Optimizing Cloud Infrastructure for Mission-Critical Applications}
+\newcommand{\AuthorGreek}{Κωνσταντίνος Τασιόπουλος}
+\newcommand{\AuthorEnglish}{Konstantinos Tasiopoulos}
+\newcommand{\SupervisorGreek}{Γεώργιος Σταμούλης}
+\newcommand{\SupervisorEnglish}{Georgios Stamoulis}
+\newcommand{\CommitteeOneGreek}{Ιωάννης Κωνσταντίνου}
+\newcommand{\CommitteeOneEnglish}{Ioannis Konstantinou}
+\newcommand{\CommitteeTwoGreek}{Αθανάσιος Λουκόπουλος}
+\newcommand{\CommitteeTwoEnglish}{Athanasios Loukopoulos}
+\newcommand{\SubmissionGreek}{Σεπτέμβριος 2026}
+\newcommand{\SubmissionEnglish}{September 2026}
+
+\newcommand{\blankpage}{%
+  \clearpage
+  \thispagestyle{empty}
+  \null
+  \clearpage
+}
+
+\newcommand{\placeholder}[1]{%
+  \begin{quote}\color{gray}\textit{#1}\end{quote}%
+}
+
+\newcommand{\figureplaceholder}[2]{%
+  \begin{figure}[htbp]
+    \centering
+    \fbox{\parbox[c][5cm][c]{0.88\textwidth}{\centering\color{gray}\textit{#1}}}
+    \caption{#2}
+  \end{figure}%
+}
+
+\begin{document}
+\frontmatter
+
+% Greek title page (physical page i; page number intentionally hidden)
+\begin{titlepage}
+  \thispagestyle{empty}
+  \centering
+  \IfFileExists{uth-logo-greek.png}{%
+    \includegraphics[width=3.4cm]{uth-logo-greek.png}%
+  }{%
+    \includegraphics[width=3.4cm]{UTH-logo-english.png}%
+  }\par
+  \vspace{0.8cm}
+  {\Large ΠΑΝΕΠΙΣΤΗΜΙΟ ΘΕΣΣΑΛΙΑΣ\par}
+  \vspace{0.25cm}
+  {\large ΠΟΛΥΤΕΧΝΙΚΗ ΣΧΟΛΗ\par}
+  \vspace{0.25cm}
+  {\large ΤΜΗΜΑ ΗΛΕΚΤΡΟΛΟΓΩΝ ΜΗΧΑΝΙΚΩΝ ΚΑΙ ΜΗΧΑΝΙΚΩΝ ΥΠΟΛΟΓΙΣΤΩΝ\par}
+  \vspace{1.8cm}
+  {\LARGE\bfseries \ThesisTitleGreek\par}
+  \vspace{1.2cm}
+  {\LARGE Διπλωματική Εργασία\par}
+  \vspace{1.1cm}
+  {\Large\bfseries \AuthorGreek\par}
+  \vfill
+  \begin{flushleft}
+    \hspace{1.2cm}\textbf{Επιβλέπων:} \SupervisorGreek
+  \end{flushleft}
+  \vfill
+  {\large \SubmissionGreek\par}
+\end{titlepage}
+
+\blankpage
+
+% English title page (page iii)
+\begin{titlepage}
+  \centering
+  \includegraphics[width=3.4cm]{UTH-logo-english.png}\par
+  \vspace{0.8cm}
+  \begin{english}
+  {\Large UNIVERSITY OF THESSALY\par}
+  \vspace{0.25cm}
+  {\large SCHOOL OF ENGINEERING\par}
+  \vspace{0.25cm}
+  {\large DEPARTMENT OF ELECTRICAL AND COMPUTER ENGINEERING\par}
+  \vspace{1.8cm}
+  {\LARGE\bfseries \ThesisTitleEnglish\par}
+  \vspace{1.2cm}
+  {\LARGE Diploma Thesis\par}
+  \vspace{1.1cm}
+  {\Large\bfseries \AuthorEnglish\par}
+  \vfill
+  \begin{flushleft}
+    \hspace{1.2cm}\textbf{Supervisor:} \SupervisorEnglish
+  \end{flushleft}
+  \vfill
+  {\large \SubmissionEnglish\par}
+  \end{english}
+\end{titlepage}
+
+\blankpage
+
+% Examination committee (page v)
+\chapter*{}
+\thispagestyle{plain}
+\vspace*{2cm}
+\noindent Εγκρίνεται από την Επιτροπή Εξέτασης:
+
+\vspace{1.4cm}
+{\footnotesize
+\noindent
+\begin{tabularx}{\textwidth}{@{}p{1.8cm}>{\raggedright\arraybackslash}X@{}}
+Επιβλέπων & \textbf{\SupervisorGreek}\\
+           & Τμήμα Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών, Πανεπιστήμιο Θεσσαλίας\\[0.9cm]
+Μέλος     & \textbf{\CommitteeOneGreek}\\
+           & Τμήμα Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών, Πανεπιστήμιο Θεσσαλίας\\[0.9cm]
+Μέλος     & \textbf{\CommitteeTwoGreek}\\
+           & Τμήμα Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών, Πανεπιστήμιο Θεσσαλίας
+\end{tabularx}
+}
+
+\blankpage
+
+% Acknowledgements (page vii)
+\chapter*{Ευχαριστίες}
+\addcontentsline{toc}{chapter}{Ευχαριστίες}
+\markboth{Ευχαριστίες}{Ευχαριστίες}
+Αρχικά, θα ήθελα να ευχαριστήσω από καρδιάς τους γονείς μου για την αγάπη,
+την υπομονή και τη διαρκή στήριξή τους σε όλη τη διάρκεια των σπουδών μου.
+Η εμπιστοσύνη τους στις επιλογές μου και η ενθάρρυνσή τους, τόσο στις όμορφες
+όσο και στις απαιτητικές στιγμές, μου έδιναν πάντοτε τη δύναμη να συνεχίζω.
+
+Θα ήθελα επίσης να εκφράσω τις θερμές μου ευχαριστίες στον επιβλέποντα
+καθηγητή μου, Γεώργιο Σταμούλη, για την καθοδήγηση, την εμπιστοσύνη και τις
+ουσιαστικές παρατηρήσεις του καθ’ όλη τη διάρκεια της εκπόνησης της
+εργασίας. Οι συμβουλές του με βοήθησαν να προσεγγίσω με μεγαλύτερη ακρίβεια
+τόσο τις τεχνικές επιλογές όσο και την αξιολόγηση των αποτελεσμάτων.
+Ευχαριστώ, ακόμη, τα μέλη της εξεταστικής επιτροπής, Ιωάννη Κωνσταντίνου και
+Αθανάσιο Λουκόπουλο, για τον χρόνο που αφιέρωσαν στη μελέτη και την
+αξιολόγηση της εργασίας μου.
+
+Ιδιαίτερες ευχαριστίες οφείλω στον Γιώργο Παπαγεωργίου, ο οποίος με
+καθοδήγησε με προθυμία και μοιράστηκε μαζί μου γνώσεις και εμπειρία που θα
+ήταν δύσκολο να αποκτήσω μόνος μου στο ίδιο χρονικό διάστημα. Η βοήθειά του
+υπήρξε καθοριστική για την κατανόηση απαιτητικών τεχνικών ζητημάτων και για
+την εξέλιξη της υλοποίησης. Ευχαριστώ επίσης θερμά τον Άγγελο Αγγέλη, καθώς
+και όλους τους συναδέλφους μου που αφιέρωσαν χρόνο, μοιράστηκαν τις γνώσεις
+τους και με βοήθησαν με συζητήσεις, παρατηρήσεις και πρακτικές συμβουλές.
+
+Τέλος, ευχαριστώ όλους τους ανθρώπους που στάθηκαν δίπλα μου κατά τη διάρκεια
+αυτής της διαδρομής. Η υπομονή, η κατανόηση και η ενθάρρυνσή τους συνέβαλαν
+ουσιαστικά στην ολοκλήρωση αυτής της προσπάθειας.
+
+\blankpage
+
+% Mandatory academic ethics and intellectual-property declaration (page ix)
+\chapter*{\Large ΥΠΕΥΘΥΝΗ ΔΗΛΩΣΗ ΠΕΡΙ ΑΚΑΔΗΜΑΪΚΗΣ ΔΕΟΝΤΟΛΟΓΙΑΣ\\ΚΑΙ ΠΝΕΥΜΑΤΙΚΩΝ ΔΙΚΑΙΩΜΑΤΩΝ}
+\markboth{Υπεύθυνη Δήλωση}{Υπεύθυνη Δήλωση}
+
+Με πλήρη επίγνωση των συνεπειών του νόμου περί πνευματικών δικαιωμάτων, δηλώνω ρητά ότι η παρούσα διπλωματική εργασία, καθώς και τα ηλεκτρονικά αρχεία και πηγαίοι κώδικες που αναπτύχθηκαν ή τροποποιήθηκαν στα πλαίσια αυτής της εργασίας, αποτελούν αποκλειστικά προϊόν προσωπικής μου εργασίας, δεν προσβάλλουν οποιασδήποτε μορφής δικαιώματα διανοητικής ιδιοκτησίας, προσωπικότητας και προσωπικών δεδομένων τρίτων, δεν περιέχουν έργα/εισφορές τρίτων για τα οποία απαιτείται άδεια των δημιουργών/δικαιούχων και δεν είναι προϊόν μερικής ή ολικής αντιγραφής, οι πηγές δε που χρησιμοποιήθηκαν περιορίζονται στις βιβλιογραφικές αναφορές και μόνον και πληρούν τους κανόνες της επιστημονικής παράθεσης. Τα σημεία όπου έχω χρησιμοποιήσει ιδέες, κείμενο, αρχεία ή/και πηγές άλλων συγγραφέων αναφέρονται ευδιάκριτα στο κείμενο με την κατάλληλη παραπομπή και η σχετική αναφορά περιλαμβάνεται στο τμήμα των βιβλιογραφικών αναφορών με πλήρη περιγραφή. Αναλαμβάνω πλήρως, ατομικά και προσωπικά, όλες τις νομικές και διοικητικές συνέπειες που δύναται να προκύψουν στην περίπτωση κατά την οποία αποδειχθεί, διαχρονικά, ότι η εργασία αυτή ή τμήμα της δεν μου ανήκει διότι είναι προϊόν λογοκλοπής.
+
+\vspace{1cm}
+\noindent Ο Δηλών\\
+\AuthorGreek
+
+\clearpage
+
+% Greek abstract (page x)
+\chapter*{Περίληψη}
+\addcontentsline{toc}{chapter}{Περίληψη}
+\markboth{Περίληψη}{Περίληψη}
+\begin{center}
+  {\Large Διπλωματική Εργασία\par}
+  \vspace{0.5cm}
+  {\large\bfseries \ThesisTitleGreek\par}
+  \vspace{0.5cm}
+  {\large\bfseries \AuthorGreek\par}
+\end{center}
+Η παρούσα διπλωματική εργασία μελετά τη μεταφορά και λειτουργία μιας
+εφαρμογής διαχείρισης κτηνιατρικής κλινικής σε υποδομή υπολογιστικού νέφους,
+με στόχο να εξεταστεί αν μία οικονομικά περιορισμένη λύση μπορεί να είναι
+ταυτόχρονα λειτουργική, ασφαλής, επαναλήψιμη και επαρκώς αξιόπιστη. Ως
+περίπτωση μελέτης χρησιμοποιήθηκε το Happy Tails, μία εφαρμογή React και
+Spring Boot που υποστηρίζει λογαριασμούς προσωπικού, κηδεμόνες, κατοικίδια,
+ραντεβού, κτηνιατρικό ιστορικό και έγγραφα.
+
+Η εφαρμογή εγκαταστάθηκε σε Amazon EC2 στην περιοχή Frankfurt με Amazon
+Linux~2023 και Docker Compose. Η παραγωγική διάταξη περιλαμβάνει Nginx,
+Spring Boot και MySQL containers, μόνιμη αποθήκευση σε EBS, δημόσια
+δρομολόγηση μέσω Elastic IP και Route~53 και κρυπτογραφημένη πρόσβαση HTTPS.
+Οι μεταβολές του σχήματος της βάσης διαχειρίζονται μέσω Liquibase. Το Amazon
+SES χρησιμοποιείται για τις ροές επαλήθευσης και ανάκτησης λογαριασμών
+προσωπικού, ενώ το Google Calendar OAuth παρέχει ανεξάρτητο συγχρονισμό
+ραντεβού και αποστολή προσκλήσεων στους κηδεμόνες.
+
+Η αξιολόγηση συνδύασε λειτουργικούς και αρνητικούς ελέγχους, δοκιμές ρόλων
+και μεταφόρτωσης, κλιμακούμενο φορτίο, σύντομο soak test, μετρικές
+CloudWatch, επανεκκίνηση container και πλήρες reboot του EC2 instance. Στις
+βαθμίδες έως 25 εικονικούς χρήστες δεν καταγράφηκαν αποτυχημένα αιτήματα,
+αν και το p95 της αρχικής σύνδεσης ξεπέρασε τα 7~s και η μέγιστη CPU έφθασε
+στιγμιαία το 77,47\%. Στο soak test ολοκληρώθηκαν 26.291 αιτήματα σε
+300,29~s με μηδενικά σφάλματα. Μετά το reboot η υπηρεσία επανήλθε σε
+40,79~s, διατηρώντας τη βάση, τα uploads και τα Liquibase changesets.
+
+Τα αποτελέσματα δείχνουν ότι η υλοποίηση είναι κατάλληλη για το περιορισμένο
+φορτίο μιας μικρής κλινικής, αλλά δεν παρέχει υψηλή διαθεσιμότητα, καθώς το
+EC2 instance, η βάση και τα αρχεία παραμένουν συγκεντρωμένα σε έναν κόμβο.
+Προτείνονται σταδιακές επεκτάσεις, από αυτοματοποιημένα backups και
+παρακολούθηση έως Application Load Balancer (ALB), Auto Scaling, RDS
+Multi-AZ και διαχειριζόμενη
+ενορχήστρωση containers, όταν οι λειτουργικές απαιτήσεις δικαιολογούν το
+πρόσθετο κόστος.
+\vspace{0.6cm}
+\noindent\textbf{Λέξεις-κλειδιά:} υπολογιστικό νέφος, Amazon Web Services, Spring Boot, υποδομή λογισμικού, αξιοπιστία, κλιμάκωση, κτηνιατρική εφαρμογή
+
+\blankpage
+
+% English abstract (page xii)
+\begin{english}
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\markboth{Abstract}{Abstract}
+\begin{center}
+  {\Large Diploma Thesis\par}
+  \vspace{0.5cm}
+  {\large\bfseries \ThesisTitleEnglish\par}
+  \vspace{0.5cm}
+  {\large\bfseries \AuthorEnglish\par}
+\end{center}
+This thesis examines the migration and operation of a veterinary clinic
+management application on cloud infrastructure. Its main objective is to
+determine whether a cost-constrained deployment can remain functional,
+secure, repeatable, and sufficiently reliable. Happy Tails was used as the
+case study: a React and Spring Boot application supporting staff accounts,
+pet owners, animals, appointments, veterinary records, and documents.
+
+The application was deployed on Amazon EC2 in the Frankfurt Region using
+Amazon Linux~2023 and Docker Compose. The production arrangement consists of
+Nginx, Spring Boot, and MySQL containers, persistent EBS storage, public
+routing through an Elastic IP and Route~53, and encrypted HTTPS access.
+Liquibase manages database schema evolution. Amazon SES supports staff
+account verification and recovery flows, while Google Calendar OAuth
+provides a separate appointment synchronization mechanism and sends calendar
+invitations to pet owners.
+
+The evaluation combined functional and negative tests, role and upload
+checks, staged load testing, a short soak test, CloudWatch metrics, a
+container restart, and a complete EC2 instance reboot. No failed requests
+were recorded at stages of up to 25 virtual users, although initial login
+p95 exceeded 7~s and peak CPU briefly reached 77.47\%. During the soak test,
+26,291 requests were completed in 300.29~s without errors. Following the
+instance reboot, the public service recovered in 40.79~s while preserving
+the database, uploaded files, and applied Liquibase changesets.
+
+The results indicate that the deployment is suitable for the limited
+workload of a small clinic. It does not, however, provide high availability,
+because the EC2 instance, database, and files remain concentrated on a
+single node. A staged evolution is therefore proposed, beginning with
+automated backups and improved monitoring and progressing to an Application
+Load Balancer, Auto Scaling, RDS Multi-AZ, and managed container
+orchestration when operational requirements justify the additional cost.
+\vspace{0.6cm}
+\noindent\textbf{Keywords:} cloud computing, Amazon Web Services, Spring Boot, software infrastructure, reliability, scalability, veterinary application
+\end{english}
+
+\clearpage
+\tableofcontents
+\clearpage
+\listoffigures
+\addcontentsline{toc}{chapter}{Κατάλογος σχημάτων}
+\clearpage
+\listoftables
+\addcontentsline{toc}{chapter}{Κατάλογος πινάκων}
+\clearpage
+
+\chapter*{Συντομογραφίες και Τεχνικοί Όροι}
+\addcontentsline{toc}{chapter}{Συντομογραφίες και Τεχνικοί Όροι}
+\markboth{Συντομογραφίες και Τεχνικοί Όροι}{Συντομογραφίες και Τεχνικοί Όροι}
+\begin{longtable}{@{}p{3.8cm}p{9.2cm}@{}}
+\textbf{Όρος} & \textbf{Επεξήγηση}\\
+\midrule
+ACME & Automated Certificate Management Environment, πρωτόκολλο αυτοματοποίησης έκδοσης και ανανέωσης TLS certificates \cite{rfc8555}.\\
+AEAD & Authenticated Encryption with Associated Data, κατηγορία αλγορίθμων που παρέχει ταυτόχρονα εμπιστευτικότητα και έλεγχο ακεραιότητας.\\
+ALB & Application Load Balancer, διαχειριζόμενο σημείο εισόδου που κατανέμει HTTP(S) κίνηση σε υγιή application targets.\\
+AMI & Amazon Machine Image, image εκκίνησης που περιλαμβάνει λειτουργικό σύστημα και αποθηκευμένη διαμόρφωση \cite{aws2026ami}.\\
+API & Application Programming Interface, προγραμματιστική διεπαφή επικοινωνίας μεταξύ συστημάτων.\\
+ARN & Amazon Resource Name, μοναδικό αναγνωριστικό πόρου στην AWS.\\
+Aurora & Διαχειριζόμενη σχεσιακή database engine της AWS, συμβατή με MySQL και PostgreSQL \cite{aws2026rds}.\\
+Auto Scaling & Αυτόματη προσθήκη, αφαίρεση ή αντικατάσταση υπολογιστικών πόρων βάσει κανόνων, υγείας και ζήτησης.\\
+AWS & Amazon Web Services, η cloud πλατφόρμα στην οποία υλοποιήθηκε το deployment.\\
+AZ & Availability Zone, διακριτή ζώνη υποδομής μέσα σε μία AWS Region.\\
+Baseline & Μέτρηση αναφοράς υπό μικρό και ελεγχόμενο φορτίο, με την οποία συγκρίνονται οι επόμενες βαθμίδες.\\
+CI/CD & Continuous Integration / Continuous Delivery, πρακτικές αυτοματοποίησης build, testing και deployment.\\
+CloudWatch Agent & Προαιρετικό λογισμικό συλλογής πρόσθετων metrics από το λειτουργικό σύστημα, όπως χρήση μνήμης, πέρα από τα βασικά EC2 metrics.\\
+CN & Common Name, πεδίο πιστοποιητικού που δηλώνει το κύριο όνομα domain για το οποίο εκδόθηκε.\\
+CNAME & Canonical Name, τύπος DNS record που αντιστοιχίζει ένα όνομα σε άλλο κανονικό όνομα.\\
+Container & Απομονωμένη μονάδα εκτέλεσης που συσκευάζει εφαρμογή, dependencies και runtime configuration \cite{docker2026containers}.\\
+CPU & Central Processing Unit, η κεντρική μονάδα επεξεργασίας και, στα διαγράμματα, το ποσοστό χρησιμοποίησής της.\\
+CSS & Cascading Style Sheets, γλώσσα περιγραφής της εμφάνισης και της προσαρμοστικής διάταξης μιας διεπαφής Ιστού.\\
+CVE & Common Vulnerabilities and Exposures, δημόσιο αναγνωριστικό γνωστής ευπάθειας λογισμικού.\\
+DDL & Data Definition Language, εντολές SQL που ορίζουν ή μεταβάλλουν το σχήμα μιας βάσης δεδομένων.\\
+Deployment & Η διαδικασία εγκατάστασης, παραμετροποίησης και ενεργοποίησης μιας εφαρμογής σε συγκεκριμένο environment.\\
+DKIM & DomainKeys Identified Mail, μηχανισμός ψηφιακής υπογραφής εξερχόμενων email για επαλήθευση του domain αποστολής.\\
+DNS & Domain Name System, το σύστημα αντιστοίχισης domain names σε IP διευθύνσεις \cite{rfc1034}.\\
+Docker Compose & Εργαλείο δηλωτικής περιγραφής και συντονισμένης εκτέλεσης πολλαπλών Docker containers \cite{docker2026compose}.\\
+EBS & Elastic Block Store, υπηρεσία μόνιμης block storage για EC2 instances \cite{aws2026ebs}.\\
+EBS volume & Εικονικός δίσκος EBS που συνδέεται σε ένα EC2 instance \cite{aws2026ebs}.\\
+EC2 & Elastic Compute Cloud, η υπηρεσία παροχής εικονικών υπολογιστικών πόρων της AWS \cite{aws2026ec2}.\\
+EC2 instance & Εικονικός server που εκτελείται στην υπηρεσία EC2 \cite{aws2026ec2}.\\
+ECS & Elastic Container Service, διαχειριζόμενη υπηρεσία ενορχήστρωσης containers της AWS.\\
+Elastic IP & Στατική δημόσια IPv4 διεύθυνση που μπορεί να συσχετιστεί με EC2 instance ή network interface.\\
+Fargate & Μοντέλο εκτέλεσης containers του ECS χωρίς άμεση διαχείριση των υποκείμενων hosts.\\
+GiB & Gibibyte, δυαδική μονάδα χωρητικότητας ίση με $2^{30}$ bytes.\\
+Hosted zone & Σύνολο DNS records που διαχειρίζεται το Route~53 για ένα συγκεκριμένο domain \cite{aws2026route53}.\\
+HTTP & Hypertext Transfer Protocol, πρωτόκολλο ανταλλαγής αιτημάτων και αποκρίσεων στον Ιστό.\\
+HTTP-01 & Μέθοδος επαλήθευσης ACME κατά την οποία αποδεικνύεται ο έλεγχος ενός domain μέσω ειδικού HTTP πόρου.\\
+HTTPS & HTTP over TLS, ασφαλής και κρυπτογραφημένη μορφή του HTTP \cite{rfc8446}.\\
+IAM & Identity and Access Management, υπηρεσία διαχείρισης identities, roles και permissions \cite{aws2026iam}.\\
+IANA & Internet Assigned Numbers Authority, οργανισμός συντονισμού καθολικών αναγνωριστικών του Διαδικτύου, όπως οι ονομασίες χρονικών ζωνών.\\
+Idempotency key & Αναγνωριστικό αιτήματος που επιτρέπει ασφαλή επανάληψη χωρίς δημιουργία δεύτερου ισοδύναμου αποτελέσματος.\\
+Instance type & Προκαθορισμένη διαμόρφωση CPU, μνήμης και δικτυακών δυνατοτήτων ενός EC2 instance \cite{aws2026ec2}.\\
+IOPS & Input/Output Operations Per Second, αριθμός λειτουργιών ανάγνωσης ή εγγραφής ανά δευτερόλεπτο.\\
+IP & Internet Protocol, πρωτόκολλο διευθυνσιοδότησης και δρομολόγησης πακέτων σε δίκτυα.\\
+ISO/IEC & International Organization for Standardization / International Electrotechnical Commission, οργανισμοί έκδοσης διεθνών προτύπων.\\
+JAR & Java Archive, πακέτο που περιέχει μεταγλωττισμένο Java κώδικα και τους απαιτούμενους πόρους εκτέλεσης.\\
+JPA & Jakarta Persistence API, προδιαγραφή αντιστοίχισης Java αντικειμένων σε σχεσιακά δεδομένα.\\
+JSON & JavaScript Object Notation, μορφή σειριοποίησης δεδομένων που χρησιμοποιείται στα API payloads.\\
+JVM & Java Virtual Machine, περιβάλλον εκτέλεσης Java bytecode.\\
+JWT & JSON Web Token, υπογεγραμμένο token για μεταφορά claims αυθεντικοποίησης και εξουσιοδότησης \cite{rfc7519}.\\
+KMS & Key Management Service, διαχειριζόμενη υπηρεσία δημιουργίας και ελέγχου κρυπτογραφικών κλειδιών της AWS.\\
+Liveness check & Έλεγχος που δηλώνει αν μία διεργασία παραμένει λειτουργική ή χρειάζεται επανεκκίνηση.\\
+Load balancing & Κατανομή εισερχόμενων requests μεταξύ πολλαπλών υπολογιστικών πόρων.\\
+Load test & Δοκιμή συμπεριφοράς του συστήματος σε προκαθορισμένο και αυξανόμενο φορτίο ταυτόχρονων χρηστών.\\
+Logging & Καταγραφή events και μηνυμάτων εφαρμογής για troubleshooting, auditing και ανάλυση \cite{aws2026cloudwatch}.\\
+MIME & Multipurpose Internet Mail Extensions, τυποποίηση δήλωσης του τύπου και της μορφής περιεχομένου ενός αρχείου ή μηνύματος.\\
+Monitoring & Συνεχής συλλογή metrics σχετικά με κατάσταση, απόδοση και διαθεσιμότητα ενός συστήματος \cite{aws2026cloudwatch}.\\
+Multi-AZ & Διάταξη πόρων σε περισσότερες Availability Zones, με στόχο ανθεκτικότητα σε αστοχία μίας ζώνης.\\
+NIST & National Institute of Standards and Technology, οργανισμός προτύπων και τεχνικών κατευθυντήριων γραμμών των ΗΠΑ.\\
+OAuth~2.0 & Πρωτόκολλο εξουσιοδότησης που επιτρέπει στην εφαρμογή περιορισμένη πρόσβαση στο Google Calendar χωρίς να λαμβάνει τον κωδικό του χρήστη \cite{rfc6749}.\\
+p50 & 50ό εκατοστημόριο ή διάμεσος: οι μισές αποκρίσεις ολοκληρώθηκαν σε αυτόν ή μικρότερο χρόνο.\\
+p95 & 95ό εκατοστημόριο: το 95\% των αποκρίσεων ολοκληρώθηκε σε αυτόν ή μικρότερο χρόνο και το βραδύτερο 5\% τον υπερέβη.\\
+p99 & 99ό εκατοστημόριο: το 99\% των αποκρίσεων ολοκληρώθηκε σε αυτόν ή μικρότερο χρόνο και το βραδύτερο 1\% τον υπερέβη.\\
+PDF & Portable Document Format, μορφή εγγράφου σταθερής σελιδοποίησης.\\
+Percentile (p50, p95, p99) & Εκατοστημόριο της κατανομής χρόνων απόκρισης. Το p95, για παράδειγμα, είναι η τιμή κάτω από την οποία ολοκληρώθηκε το 95\% των μετρήσεων· το υπόλοιπο 5\% ήταν βραδύτερο \cite{grafana2026k6thresholds}.\\
+Public subnet & Subnet με κατάλληλο routing προς Internet Gateway για πόρους που απαιτούν δημόσια πρόσβαση \cite{aws2026vpc}.\\
+RAM & Random Access Memory, η κύρια μνήμη εργασίας ενός υπολογιστικού συστήματος.\\
+RBAC & Role-Based Access Control, έλεγχος πρόσβασης όπου οι επιτρεπόμενες ενέργειες απορρέουν από τον ρόλο του χρήστη.\\
+RDS & Relational Database Service, διαχειριζόμενη υπηρεσία σχεσιακών βάσεων δεδομένων \cite{aws2026rds}.\\
+Readiness check & Έλεγχος που δηλώνει αν ένα application instance είναι έτοιμο να δεχθεί κίνηση.\\
+req/s & Requests per second, δηλαδή αριθμός αιτημάτων που ολοκληρώνονται ανά δευτερόλεπτο.\\
+REST & Representational State Transfer, αρχιτεκτονικό στυλ σχεδιασμού web APIs \cite{fielding2000rest}.\\
+Reverse proxy & Ενδιάμεσος server που δέχεται client requests και τα προωθεί στην κατάλληλη backend υπηρεσία \cite{nginx2026reverseproxy}.\\
+RPO & Recovery Point Objective, το μέγιστο αποδεκτό χρονικό διάστημα δεδομένων που μπορεί να χαθεί μετά από αστοχία.\\
+RSA & Rivest--Shamir--Adleman, αλγόριθμος ασύμμετρης κρυπτογραφίας που χρησιμοποιείται, μεταξύ άλλων, σε ζεύγη κλειδιών.\\
+RTO & Recovery Time Objective, ο μέγιστος αποδεκτός χρόνος μέχρι την επαναφορά μιας υπηρεσίας μετά από διακοπή.\\
+S3 & Simple Storage Service, διαχειριζόμενη υπηρεσία object storage της AWS.\\
+Security group & Stateful virtual firewall που ορίζει τους επιτρεπόμενους inbound και outbound κανόνες \cite{aws2026securitygroups}.\\
+SES & Simple Email Service, διαχειριζόμενη υπηρεσία αποστολής email της AWS.\\
+SFTP & SSH File Transfer Protocol, πρωτόκολλο ασφαλούς μεταφοράς αρχείων πάνω από SSH.\\
+SHA-256 & Secure Hash Algorithm 256-bit, κρυπτογραφική συνάρτηση κατακερματισμού με έξοδο 256 bit.\\
+SMTP & Simple Mail Transfer Protocol, πρωτόκολλο μεταφοράς ηλεκτρονικού ταχυδρομείου.\\
+Snapshot & Point-in-time αντίγραφο ενός EBS volume, το οποίο χρησιμοποιείται για backup και recovery \cite{aws2026ebs}.\\
+Soak test & Παρατεταμένη δοκιμή σταθερού φορτίου για τον εντοπισμό προβλημάτων που εμφανίζονται με την πάροδο του χρόνου, όπως διαρροές μνήμης ή σταδιακή αύξηση καθυστέρησης \cite{grafana2026k6testing}.\\
+SPA & Single-Page Application, εφαρμογή Ιστού που ενημερώνει δυναμικά μία κύρια σελίδα χωρίς πλήρη επαναφόρτωση για κάθε πλοήγηση.\\
+SQL & Structured Query Language, γλώσσα ορισμού και διαχείρισης σχεσιακών δεδομένων.\\
+SSH & Secure Shell, πρωτόκολλο κρυπτογραφημένης απομακρυσμένης πρόσβασης.\\
+STARTTLS & Μηχανισμός αναβάθμισης μιας απλής σύνδεσης SMTP σε κρυπτογραφημένη σύνδεση TLS.\\
+Stateless service & Υπηρεσία που δεν εξαρτάται από τοπική κατάσταση συγκεκριμένου instance και μπορεί να εξυπηρετηθεί από ισοδύναμα replicas.\\
+Status check & Αυτόματος έλεγχος της AWS για προβλήματα προσβασιμότητας ή λειτουργίας του EC2 instance.\\
+Stress test & Δοκιμή που αυξάνει το φορτίο προς το όριο λειτουργίας, ώστε να εντοπιστεί το σημείο υποβάθμισης ή κορεσμού \cite{grafana2026k6testing}.\\
+Throughput & Ρυθμός ολοκλήρωσης εργασίας· στην παρούσα αξιολόγηση εκφράζεται ως επιτυχή αιτήματα ανά δευτερόλεπτο (requests/s).\\
+TLS & Transport Layer Security, πρωτόκολλο κρυπτογράφησης της επικοινωνίας εφαρμογών δικτύου \cite{rfc8446}.\\
+TTL & Time To Live, ο χρόνος για τον οποίο ένα DNS record μπορεί να παραμένει σε cache \cite{rfc1034}.\\
+URI & Uniform Resource Identifier, αναγνωριστικό ενός πόρου· τα redirect URI δηλώνουν επιτρεπόμενους προορισμούς επιστροφής σε OAuth ροές.\\
+URL & Uniform Resource Locator, διεύθυνση πρόσβασης σε πόρο μέσω δικτύου.\\
+USD & United States Dollar, το νόμισμα στο οποίο παρουσιάζονται οι χρεώσεις των cloud υπηρεσιών.\\
+UTC & Coordinated Universal Time, διεθνές χρονικό πρότυπο αναφοράς.\\
+UUID & Universally Unique Identifier, αναγνωριστικό 128 bit με πρακτικά αμελητέα πιθανότητα σύγκρουσης.\\
+vCPU & Virtual Central Processing Unit, εικονική μονάδα επεξεργασίας που εκχωρείται σε ένα cloud instance.\\
+VPC & Virtual Private Cloud, λογικά απομονωμένο εικονικό δίκτυο στην AWS \cite{aws2026vpc}.\\
+VU (Virtual User) & Εικονικός χρήστης που εκτελεί το σενάριο της δοκιμής φόρτου. Πολλαπλά VU προσομοιώνουν ταυτόχρονους χρήστες, χωρίς να αντιστοιχούν κατ' ανάγκη σε ισάριθμα αιτήματα ανά δευτερόλεπτο \cite{grafana2026k6metrics}.\\
+WAF & Web Application Firewall, προστασία του HTTP(S) άκρου με κανόνες επιθεώρησης και φιλτραρίσματος αιτημάτων.\\
+Warm-up & Σύντομη προκαταρκτική εκτέλεση πριν από τη μέτρηση, ώστε να αρχικοποιηθούν συνδέσεις, caches και runtime paths.\\
+WCAG & Web Content Accessibility Guidelines, διεθνείς κατευθυντήριες γραμμές προσβασιμότητας περιεχομένου Ιστού.\\
+\end{longtable}
+
+\mainmatter
+
+\chapter{Εισαγωγή}
+\input{chapters/chapter1}
+
+
+\chapter{Βιβλιογραφική Ανασκόπηση και Θεωρητικό Υπόβαθρο}
+\input{chapters/chapter2}
+
+\chapter{Ανάλυση Απαιτήσεων και Υφιστάμενο Σύστημα}
+\input{chapters/chapter3}
+
+\chapter{Σχεδιασμός της Υποδομής Νέφους}
+\input{chapters/chapter4}
+
+
+\chapter{Υλοποίηση και Ανάπτυξη}
+\input{chapters/chapter5}
+
+
+\chapter{Πειραματική Αξιολόγηση}
+\input{chapters/chapter6}
+
+
+\chapter{Συμπεράσματα και Μελλοντικές Επεκτάσεις}
+\input{chapters/chapter7}
+
+\cleardoublepage
+\chapter*{Πηγαίος Κώδικας}
+\addcontentsline{toc}{chapter}{Πηγαίος Κώδικας}
+Ο πηγαίος κώδικας της εφαρμογής και τα συνοδευτικά αρχεία που χρησιμοποιήθηκαν
+στην παρούσα εργασία είναι διαθέσιμα στο ακόλουθο αποθετήριο:
+
+\begin{center}
+\url{https://github.com/Tasiop6/pet-clinic-thesis}
+\end{center}
+
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Βιβλιογραφία}
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

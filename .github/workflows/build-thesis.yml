@@ -1,0 +1,35 @@
+name: Build thesis PDF
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - develop-tasiop
+    paths:
+      - "thesis-overleaf/**"
+      - ".github/workflows/build-thesis.yml"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Compile thesis with XeLaTeX
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          working_directory: thesis-overleaf
+          latexmk_use_xelatex: true
+          extra_system_packages: font-liberation
+
+      - name: Upload thesis PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: thesis-pdf
+          path: thesis-overleaf/main.pdf
+          if-no-files-found: error
+          retention-days: 14
