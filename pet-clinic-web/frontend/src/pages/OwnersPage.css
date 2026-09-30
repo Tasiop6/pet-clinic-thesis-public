@@ -1,0 +1,81 @@
+.owners-page .search-bar {
+  display: flex;
+  gap: 1rem;
+}
+
+.search-bar input {
+  flex: 1;
+}
+
+.owners-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.owner-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.owner-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.owner-initials {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.owner-details {
+  flex: 1;
+  display: grid;
+  gap: 0.25rem;
+  text-align: left;
+}
+
+.owner-pets {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.pet-tag {
+  font-weight: 600;
+}
+
+.pet-tag.male {
+  background: rgba(45, 108, 223, 0.15);
+  color: #2456bf;
+}
+
+.pet-tag.female {
+  background: rgba(231, 76, 153, 0.18);
+  color: #d93d8d;
+}
+
+.owner-form {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .owners-page .search-bar {
+    flex-direction: column;
+  }
+}

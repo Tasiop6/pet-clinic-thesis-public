@@ -1,0 +1,14 @@
+{
+  "links": {
+    "dashboard": "Dashboard",
+    "owners": "Owners",
+    "appointments": "Appointments",
+    "vets": "Vets",
+    "users": "Users",
+    "profile": "Profile"
+  },
+  "actions": {
+    "open": "Open navigation",
+    "close": "Close navigation"
+  }
+}

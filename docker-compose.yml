@@ -1,0 +1,94 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: petclinic-mysql
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-petclinic}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
+      MYSQL_USER: ${MYSQL_USER:-petclinic}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Set MYSQL_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u root --password=$${MYSQL_ROOT_PASSWORD} || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    networks: [internal]
+
+  spring:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: petclinic-app
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      MYSQL_HOST: petclinic-mysql
+      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER:-petclinic}
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD:?Set MYSQL_PASSWORD in .env}
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in .env}
+      APP_BOOTSTRAP_ADMIN_USERNAME: ${APP_BOOTSTRAP_ADMIN_USERNAME:-admin}
+      APP_BOOTSTRAP_ADMIN_PASSWORD: ${APP_BOOTSTRAP_ADMIN_PASSWORD:?Set APP_BOOTSTRAP_ADMIN_PASSWORD in .env}
+      APP_BOOTSTRAP_ADMIN_EMAIL: ${APP_BOOTSTRAP_ADMIN_EMAIL:-admin@petclinic.local}
+      GOOGLE_CALENDAR_CLIENT_ID: ${GOOGLE_CALENDAR_CLIENT_ID:-}
+      GOOGLE_CALENDAR_CLIENT_SECRET: ${GOOGLE_CALENDAR_CLIENT_SECRET:-}
+      GOOGLE_CALENDAR_REDIRECT_URI: ${GOOGLE_CALENDAR_REDIRECT_URI:-http://localhost/auth/google/callback}
+      SPRING_MAIL_HOST: ${SPRING_MAIL_HOST:-}
+      SPRING_MAIL_PORT: ${SPRING_MAIL_PORT:-587}
+      SPRING_MAIL_USERNAME: ${SPRING_MAIL_USERNAME:-}
+      SPRING_MAIL_PASSWORD: ${SPRING_MAIL_PASSWORD:-}
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH:-true}
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE:-true}
+      CLINIC_NOTIFICATIONS_FROM: ${CLINIC_NOTIFICATIONS_FROM:-no-reply@petclinic.local}
+      CLINIC_PUBLIC_BASE_URL: ${CLINIC_PUBLIC_BASE_URL:-http://localhost}
+      EMAIL_VERIFICATION_TOKEN_HOURS: ${EMAIL_VERIFICATION_TOKEN_HOURS:-24}
+      PASSWORD_RESET_TOKEN_MINUTES: ${PASSWORD_RESET_TOKEN_MINUTES:-60}
+      SERVER_PORT: 8080
+      SPRING_PROFILES_ACTIVE: production,springdatajpa
+      # make Spring trust proxy headers
+      SERVER_FORWARD_HEADERS_STRATEGY: framework
+      SERVER_COMPRESSION_ENABLED: "true"
+      SERVER_HTTP2_ENABLED: "true"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    expose:
+      - "8080"
+    volumes:
+      - petclinic-uploads:/app/uploads
+      - petclinic-logs:/app/logs
+    networks: [internal]
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: petclinic-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - spring
+    networks: [internal, web]
+
+networks:
+  internal:
+    driver: bridge
+  web:
+    driver: bridge
+
+volumes:
+  mysql-data:
+  petclinic-uploads:
+  petclinic-logs:

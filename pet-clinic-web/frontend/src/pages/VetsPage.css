@@ -1,0 +1,87 @@
+.vets-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.vet-admin-card {
+  margin-bottom: 1.75rem;
+}
+
+.vet-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.vet-form .grid.three {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.vet-form-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.vet-specialty-field {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  background: rgba(45, 108, 223, 0.05);
+}
+
+.vet-specialty-grid {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.vet-specialty-option {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.vet-card {
+  display: flex;
+  gap: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  background: var(--color-surface);
+}
+
+.vet-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+}
+
+.vet-details {
+  flex: 1;
+}
+
+.vet-email {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  display: block;
+}
+
+.vet-specialties {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.vet-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-left: auto;
+}

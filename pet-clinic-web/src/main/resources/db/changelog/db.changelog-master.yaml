@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/db.changelog-2025-10-23-appointment-owner-pet.yaml
+  - include:
+      file: db/changelog/db.changelog-2026-09-01-email-verification.yaml
+  - include:
+      file: db/changelog/db.changelog-2026-09-04-password-reset.yaml

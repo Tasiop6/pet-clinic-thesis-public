@@ -1,0 +1,128 @@
+.record-form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.record-form-content .grid.two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+/* Form Groups & Labels */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-left: 0.25rem;
+}
+
+/* Elegant Input Styles */
+.record-form-content input[type="text"],
+.record-form-content input[type="number"],
+.record-form-content input[type="date"],
+.record-form-content select,
+.record-form-content textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    outline: none;
+    appearance: none;
+    /* Removes default OS styling */
+}
+
+.record-form-content input:hover,
+.record-form-content select:hover,
+.record-form-content textarea:hover {
+    border-color: var(--color-text-muted);
+}
+
+.record-form-content input:focus,
+.record-form-content select:focus,
+.record-form-content textarea:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.record-form-content textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Metrics Grid - Cards looking inputs */
+.record-form-content .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+}
+
+/* File Input - Dashed Dropzone */
+.record-form-content .file-input {
+    border: 2px dashed var(--color-border);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    background: var(--color-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.5rem;
+    transition: all var(--transition-normal);
+    color: var(--color-text-secondary);
+}
+
+.record-form-content .file-input:hover {
+    background: var(--color-surface-hover);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+/* Feedback Messages */
+.record-feedback {
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.record-feedback.error {
+    background: var(--color-danger-soft);
+    color: var(--color-danger);
+    border: 1px solid rgba(229, 62, 62, 0.2);
+}
+
+.record-feedback.success {
+    background: var(--color-success-soft);
+    color: var(--color-success);
+    border: 1px solid rgba(56, 161, 105, 0.2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

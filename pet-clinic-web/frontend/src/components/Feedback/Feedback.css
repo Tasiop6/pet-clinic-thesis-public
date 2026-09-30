@@ -1,0 +1,43 @@
+.feedback {
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.empty-state {
+    flex-direction: column;
+    text-align: center;
+    padding: 2.5rem;
+    background: var(--color-background);
+    border: 2px dashed var(--color-border);
+    color: var(--color-text-muted);
+}
+
+.feedback-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state h3 {
+    margin: 0.5rem 0 0.25rem;
+    color: var(--color-text);
+}
+
+.feedback-actions {
+    margin-top: 1.5rem;
+}
+
+.error-banner {
+    background: var(--color-danger-soft);
+    color: #c53030;
+    border: 1px solid rgba(197, 48, 48, 0.1);
+}
+
+.success-banner {
+    background: var(--color-success-soft);
+    color: #276749;
+    border: 1px solid rgba(39, 103, 73, 0.1);
+}

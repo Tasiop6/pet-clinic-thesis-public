@@ -1,0 +1,125 @@
+.auth-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 3rem 1.5rem 4rem;
+  background: radial-gradient(circle at top, #f0f4ff, #f6f8fb 55%);
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  /* Clips the rotating aurora background */
+}
+
+.auth-layout::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(from 90deg at 50% 50%, rgba(94, 168, 255, 0.25), transparent 55%);
+  animation: aurora 12s linear infinite;
+  pointer-events: none;
+}
+
+.auth-card {
+  width: min(420px, 100%);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 2.5rem 2.75rem;
+  display: grid;
+  gap: 1.5rem;
+  transform: translateY(16px);
+  opacity: 0;
+  animation: floatIn 0.7s ease forwards;
+}
+
+.auth-header h1 {
+  margin: 0.75rem 0 0.5rem;
+  font-size: 1.9rem;
+}
+
+.auth-header p {
+  margin: 0;
+}
+
+.auth-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.auth-form label {
+  font-weight: 600;
+}
+
+.auth-field-link {
+  display: block;
+  margin-top: 0.45rem;
+  text-align: right;
+  font-size: 0.9rem;
+}
+
+.auth-form input {
+  width: 100%;
+}
+
+.auth-card a {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+button,
+.auth-form input {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover:not(:disabled),
+.auth-form input:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(45, 108, 223, 0.18);
+}
+
+@media (max-width: 768px) {
+  .auth-layout {
+    align-items: flex-start;
+    padding: 2.5rem 1.25rem 3rem;
+  }
+
+  .auth-card {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 1.75rem 1.5rem;
+    gap: 1.25rem;
+  }
+}
+
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes aurora {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: rotate(360deg);
+    opacity: 0.35;
+  }
+}

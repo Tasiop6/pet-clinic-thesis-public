@@ -1,0 +1,67 @@
+.appointments-list-container {
+    overflow: hidden;
+}
+
+.appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.appointments-table th {
+    text-align: left;
+    padding: 1rem;
+    background: var(--color-background);
+    color: var(--color-text-muted);
+    font-weight: 600;
+    border-bottom: 2px solid var(--color-border);
+}
+
+.appointments-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-border-subtle);
+    color: var(--color-text);
+    vertical-align: middle;
+}
+
+.appointments-table tr:hover {
+    background: var(--color-surface-hover);
+}
+
+.appointments-mobile-list {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: var(--color-background);
+    color: var(--color-text-muted);
+}
+
+.status-badge.confirmed {
+    background: var(--color-success-soft);
+    color: var(--color-success);
+}
+
+.appointment-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media (max-width: 900px) {
+    .appointments-table-wrapper {
+        display: none;
+    }
+
+    .appointments-mobile-list {
+        display: flex;
+    }
+}

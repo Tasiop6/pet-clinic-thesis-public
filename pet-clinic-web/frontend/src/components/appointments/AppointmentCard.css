@@ -1,0 +1,94 @@
+.appointment-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.appointment-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--color-accent);
+}
+
+.appointment-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--color-border);
+    transition: background 0.2s;
+}
+
+.appointment-card:hover::before {
+    background: var(--color-accent);
+}
+
+.appt-time {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.appt-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.appt-meta strong {
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.appt-meta span {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+.appt-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.appt-tag {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-full);
+    background: var(--color-surface-hover);
+    color: var(--color-text-secondary);
+    border: 1px solid transparent;
+}
+
+.appt-tag.warning {
+    background: #fff7ed;
+    color: #c2410c;
+    border-color: #ffedd5;
+}
+
+.appointment-card .action-menu-trigger {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.appointment-card:hover .action-menu-trigger {
+    opacity: 1;
+}

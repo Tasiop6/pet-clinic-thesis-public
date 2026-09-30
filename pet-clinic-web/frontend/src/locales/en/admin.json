@@ -1,0 +1,89 @@
+{
+  "title": "User approvals",
+  "subtitle": "Review pending signups and activate accounts once verified.",
+  "loading": "Loading pending requests…",
+  "loadError": "Unable to load pending users.",
+  "empty": {
+    "title": "Nothing waiting!",
+    "message": "There are no pending signup requests right now."
+  },
+  "fields": {
+    "email": "Email",
+    "emailMissing": "No email provided",
+    "status": "Status",
+    "active": "Active",
+    "pending": "Awaiting approval",
+    "blacklisted": "Blacklisted"
+  },
+  "sections": {
+    "pending": {
+      "title": "Pending approvals",
+      "subtitle": "Activate verified accounts or move them to the blacklist for safety."
+    },
+    "active": {
+      "title": "Active users",
+      "subtitle": "Block a user instantly if access should be revoked.",
+      "loading": "Loading active users…",
+      "loadError": "Unable to load active users.",
+      "empty": {
+        "title": "No active users",
+        "message": "No one has been approved yet."
+      }
+    },
+    "blacklisted": {
+      "title": "Blacklisted users",
+      "subtitle": "Blacklisted users cannot sign in until reinstated.",
+      "loading": "Loading blacklisted users…",
+      "loadError": "Unable to load blacklisted users.",
+      "empty": {
+        "title": "No blocked users",
+        "message": "You haven't blacklisted any accounts."
+      }
+    },
+    "roles": {
+      "title": "Role management",
+      "subtitle": "Assign clinic owner, super administrator, and vet permissions to approved users.",
+      "loading": "Loading role assignments…",
+      "loadError": "Unable to load role information.",
+      "empty": {
+        "title": "No users available",
+        "message": "Approve a user to manage their roles."
+      },
+      "save": "Save changes",
+      "saving": "Saving…",
+      "updated": "{{user}} roles updated.",
+      "error": "Unable to update user roles.",
+      "labels": {
+        "superadmin": "Super administrator",
+        "owner": "Clinic owner",
+        "vet": "Veterinarian",
+        "assignment": "Vet assignment"
+      },
+      "notes": {
+        "superadmin": "Super administrators can manage every account and bypass restrictions.",
+        "staff": "Staff access is always included."
+      },
+      "vetUnset": "No vet selected",
+      "vetRequired": "Select a vet profile to enable the veterinarian role."
+    }
+  },
+  "actions": {
+    "approve": "Approve",
+    "approving": "Approving…",
+    "deactivate": "Deactivate",
+    "deactivating": "Updating…",
+    "approved": "{{user}} is now active.",
+    "deactivated": "{{user}} has been set to pending.",
+    "blacklist": "Blacklist",
+    "blacklisting": "Blacklisting…",
+    "blacklisted": "{{user}} has been blacklisted.",
+    "reinstate": "Reinstate",
+    "reinstating": "Reinstating…",
+    "delete": "Delete account",
+    "deleting": "Deleting…",
+    "deleted": "The account was deleted. Its username and email can now be registered again.",
+    "deleteConfirm": "Permanently delete @{{user}}? The login account will be removed and a future registration will require a new email verification.",
+    "reinstated": "{{user}} has been reinstated to pending.",
+    "error": "Unable to update the user."
+  }
+}

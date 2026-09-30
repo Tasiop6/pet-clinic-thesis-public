@@ -1,0 +1,101 @@
+.pet-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-soft);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    border: 1px solid var(--color-border-subtle);
+}
+
+.pet-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+.pet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.pet-header-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.pet-header-title h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.pet-gender-chip {
+    font-size: 0.875rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-full);
+    background: var(--color-surface-hover);
+    color: var(--color-text-secondary);
+    line-height: 1;
+}
+
+.pet-gender-chip.male {
+    color: #2563eb;
+    background: #eff6ff;
+}
+
+.pet-gender-chip.female {
+    color: #db2777;
+    background: #fdf2f8;
+}
+
+.pet-header-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Action Menu Button (Meatballs) - Placeholder for now, reusing button styling */
+.action-menu-trigger {
+    background: transparent;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    border-radius: var(--radius-full);
+    transition: background 0.2s;
+}
+
+.action-menu-trigger:hover {
+    background: var(--color-surface-hover);
+    color: var(--color-text-primary);
+}
+
+/* Internal components */
+.pet-analytics-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.pet-records {
+    border-top: 1px solid var(--color-border-subtle);
+    padding-top: 1.5rem;
+}
+
+.records-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.records-header h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}

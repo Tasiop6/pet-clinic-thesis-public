@@ -1,0 +1,14 @@
+.owner-form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.pet-form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Ensure reusable styles from OwnerDetailPage.css work here too if needed, 
+   but specific modal tweaks can go here */

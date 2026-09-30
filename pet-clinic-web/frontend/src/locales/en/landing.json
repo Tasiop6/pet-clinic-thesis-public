@@ -1,0 +1,138 @@
+{
+  "hero": {
+    "title": "Welcome to Your Pet's Second Home",
+    "subtitle": "Compassionate care for your furry friends. We provide top-notch veterinary services with a personal touch.",
+    "cta": "Book an Appointment"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive veterinary care for your beloved pets.",
+    "internal_medicine": {
+      "title": "Internal Medicine",
+      "desc": "Depth analysis of every case using modern equipment to find the root cause and propose effective treatments."
+    },
+    "surgery": {
+      "title": "Surgery",
+      "desc": "Fully equipped surgical suite with anesthetic monitoring to ensure safe and effective procedures."
+    },
+    "dentistry": {
+      "title": "Dentistry",
+      "desc": "Professional teeth cleaning and extractions to treat tartar, gingivitis, and bad breath."
+    },
+    "hospitalization": {
+      "title": "Hospitalization",
+      "desc": "Two dedicated ward areas for patients requiring fluids, medication, and close monitoring."
+    },
+    "prevention": {
+      "title": "Prevention & Vaccination",
+      "desc": "Vaccinations and parasitic control against Leishmaniasis, Heartworm, Ehrlichia, and more."
+    },
+    "home_visits": {
+      "title": "Home Visits",
+      "desc": "We offer home visits for vaccinations and treatments when bringing your pet to the clinic is difficult."
+    },
+    "grooming": {
+      "title": "Grooming",
+      "desc": "Baths and haircuts in a specially designed area with professional drying equipment."
+    },
+    "cat_boarding": {
+      "title": "Cat Boarding",
+      "desc": "Specially designed rooms with toys to host your cat for short or long stays."
+    }
+  },
+  "about": {
+    "title": "About Happy Tails",
+    "p1": "In my diploma thesis, I study the design, deployment and operation of a modern pet clinic management application on cloud infrastructure.",
+    "p2": "For this purpose, I designed and developed Happy Tails, which supports the management of owners, pets, appointments, medical records and documents and is used for the practical evaluation of the AWS infrastructure."
+  },
+  "gallery": {
+    "title": "Our Gallery",
+    "genericAlt": "Illustration of pet care in a veterinary clinic"
+  },
+  "menu": {
+    "home": "Home",
+    "clinic": "The Clinic",
+    "services": "Services",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "service_list": {
+      "internal_medicine": "Internal Medicine",
+      "surgery": "Surgery",
+      "dentistry": "Dentistry",
+      "hospitalization": "Hospitalization",
+      "prevention": "Prevention & Vaccination",
+      "home_visits": "Home Visits",
+      "grooming": "Grooming",
+      "cat_boarding": "Cat Boarding"
+    }
+  },
+  "contact": {
+    "title": "Diploma Thesis Information",
+    "project": "A pet clinic management web application and a practical study of AWS infrastructure.",
+    "developerTitle": "Student",
+    "developer": "Konstantinos Tasiopoulos",
+    "studentNumber": "Student ID: 02936",
+    "institution": "University of Thessaly — Department of Electrical and Computer Engineering, Volos",
+    "mapTitle": "Map of the University of Thessaly Department of Electrical and Computer Engineering in Volos"
+  },
+  "faq": {
+    "title": "Frequent Questions",
+    "subtitle": "Common questions about our clinic and pet care.",
+    "vaccinations": {
+      "title": "Vaccinations",
+      "q1": "When should I start vaccinating my puppy?",
+      "a1": "Puppies can start vaccinations at 6-8 weeks of age. The first shot is followed by a second one a month later, and a third a month after that. The final shot includes the Rabies vaccine. Afterwards, annual boosters are recommended.",
+      "q2": "What about kitten vaccinations?",
+      "a2": "Kittens follow a similar schedule, starting at 6-8 weeks old with three shots spaced a month apart. Annual boosters are recommended thereafter. Full immunity is typically achieved 2-3 weeks after the third vaccination.",
+      "q3": "Are there side effects to vaccinations?",
+      "a3": "Side effects are usually mild and temporary. Common ones include reduced appetite, lethargy, or mild swelling at the injection site. Allergic reactions are rare but require immediate veterinary attention.",
+      "q4": "Is there a vaccine for Leishmaniasis?",
+      "a4": "Yes. Leishmaniasis is a serious disease transmitted by sandflies. The vaccine reduces symptom severity and makes treatment easier, but it does not prevent infection. Therefore, using repellents (collars/spot-ons) is still necessary."
+    },
+    "deworming": {
+      "title": "Deworming & Parasites",
+      "q1": "How often should I deworm my pet?",
+      "a1": "Intestinal deworming pills should be given every 3 months for both dogs and cats. Puppies and kittens require more frequent doses.",
+      "q2": "What is Heartworm prevention?",
+      "a2": "Heartworm (Dirofilaria) is transmitted by mosquitoes. Prevention for dogs involves a monthly pill (killing larvae) and a repellent (collar/spot-on). For cats, monthly prevention is also available.",
+      "q3": "How do I protect my dog from fleas and ticks?",
+      "a3": "Effective protection relies on a combination of products. For dogs, we recommend a spot-on or pill (killing fleas/ticks) combined with a collar (repelling sandflies/mosquitoes).",
+      "q4": "Can I use dog products on my cat?",
+      "a4": "NO! Never use a dog product on a cat or vice versa without consulting a veterinarian. Some ingredients safe for dogs are toxic to cats."
+    },
+    "nutrition": {
+      "title": "Nutrition",
+      "q1": "What is the best diet for my pet?",
+      "a1": "The main diet should be high-quality dry food (kibble) suitable for their life stage (junior, adult, senior) and breed size. Canned food can be used as a supplement or treat.",
+      "q2": "Can I give treats?",
+      "a2": "Yes, treats can be used for training or as a supplement to the diet, but moderation is key.",
+      "q3": "Can I give bones to my dog?",
+      "a3": "NO! Bones can cause gastrointestinal upset or, worse, obstruction which may require surgery and can be life-threatening.",
+      "q4": "Is human food safe for pets?",
+      "a4": "Generally, no. Human food is unbalanced and may contain toxic ingredients like onions, raisins, or chocolate. Pets can also become picky eaters if fed human food often."
+    },
+    "bad_breath": {
+      "title": "Bad Breath",
+      "q1": "Why does my pet have bad breath?",
+      "a1": "Bad breath is usually caused by tartar and gingivitis. Professional dental cleaning at the clinic is the required treatment. Regular brushing helps prevent it."
+    },
+    "grooming": {
+      "title": "Grooming & Bathing",
+      "q1": "How often should I bathe my pet?",
+      "a1": "Bathing is typically not needed more than once a month unless there is a specific skin condition. Always use a pet-specific shampoo and avoid getting water in the ears.",
+      "q2": "Is grooming necessary?",
+      "a2": "Haircuts are not strictly necessary but can help dogs in summer or remove mats/knots. There is no restriction on frequency."
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "dev": "Designed and developed by",
+    "quick_links": "Quick Links",
+    "categories": "Categories"
+  },
+  "nav": {
+    "login": "Login",
+    "dashboard": "Dashboard",
+    "connected_as": "Signed in as {{name}}"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "title": "Pet families",
+  "subtitle": "Search families, review pet records, and keep contact details up to date.",
+  "actions": {
+    "openForm": "Add owner",
+    "closeForm": "Close"
+  },
+  "search": {
+    "placeholder": "Search by last name",
+    "submit": "Search"
+  },
+  "form": {
+    "title": "Create owner",
+    "error": "Unable to create owner.",
+    "success": "Owner created successfully.",
+    "creating": "Creating...",
+    "submit": "Create owner",
+    "fields": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "city": "City",
+      "telephone": "Telephone",
+      "address": "Address",
+      "email": "Email"
+    }
+  },
+  "list": {
+    "title": "Families",
+    "error": "Unable to load owners.",
+    "noPets": "No pets yet",
+    "cityPending": "City pending",
+    "emptyTitle": "No families yet",
+    "emptyMessage": "Add a new owner to start tracking their pets and visits.",
+    "petGender": {
+      "male": "Male",
+      "female": "Female"
+    }
+  }
+}

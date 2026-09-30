@@ -1,0 +1,37 @@
+{
+  "title": "Clinical team",
+  "subtitle": "Manage the veterinarians available for appointments.",
+  "form": {
+    "addTitle": "Add veterinarian",
+    "editTitle": "Edit veterinarian",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "specialties": "Specialties",
+    "loadingSpecialties": "Loading specialties…",
+    "emptySpecialties": "No specialties defined yet.",
+    "saving": "Saving…",
+    "create": "Save vet",
+    "update": "Update vet"
+  },
+  "actions": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleting": "Deleting…"
+  },
+  "feedback": {
+    "created": "Vet added successfully.",
+    "updated": "Vet updated successfully.",
+    "deleted": "Vet removed. Future appointments will remain assigned without a vet."
+  },
+  "errors": {
+    "load": "Unable to load vets."
+  },
+  "empty": {
+    "title": "No vets",
+    "message": "Invite your veterinary team to get started."
+  },
+  "labels": {
+    "general": "General practice"
+  }
+}

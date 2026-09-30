@@ -1,0 +1,13 @@
+services:
+  spring:
+    environment:
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in .env}
+      APP_BOOTSTRAP_ADMIN_USERNAME: ${APP_BOOTSTRAP_ADMIN_USERNAME:-admin}
+      APP_BOOTSTRAP_ADMIN_PASSWORD: ${APP_BOOTSTRAP_ADMIN_PASSWORD:?Set APP_BOOTSTRAP_ADMIN_PASSWORD in .env}
+
+  nginx:
+    ports:
+      - "443:443"
+    volumes:
+      - ./certbot/www:/var/www/certbot:ro
+      - ./certbot/conf:/etc/letsencrypt:ro

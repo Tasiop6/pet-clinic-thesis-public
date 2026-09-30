@@ -1,0 +1,235 @@
+{
+  "page": {
+    "title": "Appointments",
+    "subtitle": "Stay on top of the weekly schedule, drag to reschedule, and keep every visit detail in one place.",
+    "controls": {
+      "previous": "◀ Previous",
+      "next": "Next ▶",
+      "today": "Today",
+      "weekRange": "{{start}} – {{end}}"
+    },
+    "views": {
+      "month": "Month",
+      "week": "Week",
+      "day": "Day"
+    },
+    "timeframes": {
+      "morning": {
+        "label": "Morning",
+        "range": "08:00 – 11:00"
+      },
+      "midday": {
+        "label": "Midday",
+        "range": "11:00 – 15:00"
+      },
+      "afternoon": {
+        "label": "Afternoon",
+        "range": "15:00 – 18:00"
+      },
+      "evening": {
+        "label": "Evening",
+        "range": "18:00 – 21:00"
+      }
+    },
+    "summary": {
+      "title": "Week at a glance",
+      "appointments": "{{count}} appointments",
+      "empty": "No appointments scheduled this week."
+    },
+    "calendar": {
+      "error": "Unable to load appointments."
+    },
+    "emptyState": {
+      "title": "Week is wide open",
+      "message": "Click an empty slot in the calendar to schedule your first appointment."
+    },
+    "event": {
+      "petFallback": "Clinic visit",
+      "ownerFallback": "Owner pending",
+      "googleFallback": "Calendar event",
+      "vetLabel": "Vet: {{vet}}"
+    },
+    "autoSync": {
+      "running": "Auto-syncing {{count}} pending appointment(s)…",
+      "pending": "{{count}} appointment(s) awaiting sync; retry runs automatically.",
+      "lastAttempt": "Last attempt: {{time}}"
+    }
+  },
+  "drawer": {
+    "create": {
+      "title": "New appointment",
+      "subtitle": "{{date}} at {{time}}",
+      "fields": {
+        "telephone": "Contact mobile",
+        "telephonePlaceholder": "Enter mobile number",
+        "owner": "Owner",
+        "ownerPlaceholder": "Select owner",
+        "ownerSearchPlaceholder": "Search by name, phone, or email",
+        "ownerSearchNoResults": "No owners match your search",
+        "ownerClearSelection": "Clear selection",
+        "ownerFallback": "Owner unavailable",
+        "pet": "Pet",
+        "petPlaceholder": {
+          "default": "Select pet",
+          "noOwner": "Choose an owner first",
+          "empty": "No pets found"
+        },
+        "vet": "Attending vet",
+        "vetPlaceholder": {
+          "default": "Select vet",
+          "empty": "No vets available",
+          "loading": "Loading vets…",
+          "error": "Unable to load vets."
+        },
+        "date": "Date",
+        "time": "Time",
+        "notes": "Notes",
+        "notesPlaceholder": "Reason for visit",
+        "findings": "Clinical findings",
+        "findingsPlaceholder": "Optional clinical notes",
+        "treatments": "Treatments",
+        "treatmentsPlaceholder": "Planned treatment",
+        "medications": "Medications",
+        "medicationsPlaceholder": "Prescribed medication"
+      },
+      "actions": {
+        "submit": "Create appointment",
+        "submitting": "Saving…"
+      }
+    },
+    "edit": {
+      "loading": "Loading appointment…",
+      "titleFallback": "Appointment",
+      "assignedVet": "Assigned vet: {{vet}}",
+      "assignedVetNone": "No vet assigned yet.",
+      "saved": "The appointment was saved successfully.",
+      "buttons": {
+        "prescription": "Prescription",
+        "delete": "Delete",
+        "deleting": "Deleting…",
+        "close": "Close",
+        "save": "Save",
+        "saving": "Saving…"
+      },
+      "fields": {
+        "notes": {
+          "label": "Notes",
+          "placeholder": "Summary or reminder"
+        },
+        "findings": {
+          "label": "Clinical findings",
+          "placeholder": "Exam observations"
+        },
+        "treatments": {
+          "label": "Treatments",
+          "placeholder": "Treatments performed or discussed"
+        },
+        "medications": {
+          "label": "Medications",
+          "placeholder": "Prescribed drugs and dosage"
+        },
+        "telephone": {
+          "label": "Contact mobile",
+          "placeholder": "Phone number to reach the owner"
+        },
+        "vet": {
+          "label": "Assigned vet",
+          "placeholder": "No vet assigned",
+          "empty": "No vets available",
+          "loading": "Loading vets…",
+          "error": "Unable to load vets."
+        },
+        "vetFallback": "Assigned veterinarian"
+      }
+    },
+    "petGender": {
+      "male": "Male",
+      "female": "Female"
+    },
+    "external": {
+      "range": "{{start}} → {{end}}",
+      "descriptionTitle": "Description",
+      "noDescription": "No additional description provided.",
+      "location": "Location",
+      "openLink": "Open in calendar"
+    },
+    "records": {
+      "title": "Attachments & medical records",
+      "description": "Attach labs, imaging, or notes so they stay with the appointment.",
+      "typeLabels": {
+        "VITALS": "Vitals",
+        "XRAY": "X-ray",
+        "BLOOD_WORK": "Blood work",
+        "PRESCRIPTION": "Prescription",
+        "EXAM_NOTE": "Exam note",
+        "OTHER": "Other"
+      },
+      "form": {
+        "type": "Record type",
+        "recordDate": "Record date",
+        "title": "Title",
+        "titlePlaceholder": "Optional title",
+        "notes": "Notes",
+        "notesPlaceholder": "Summary or observations",
+        "metrics": {
+          "weight": "Weight (kg)",
+          "temperature": "Temperature (°C)",
+          "heartRate": "Heart rate (bpm)",
+          "respiration": "Respiration (bpm)",
+          "weightPlaceholder": "e.g. 12.4",
+          "temperaturePlaceholder": "e.g. 38.5",
+          "heartRatePlaceholder": "e.g. 90",
+          "respirationPlaceholder": "e.g. 22"
+        },
+        "additional": "Additional metrics",
+        "additionalPlaceholder": "Diet changes, lab values, or other data",
+        "files": "Attach files",
+        "submit": "Upload",
+        "submitting": "Uploading…"
+      },
+      "messages": {
+        "uploaded": "Record added to appointment.",
+        "deleted": "Record removed."
+      },
+      "errors": {
+        "fileTooLarge": "{{name}} exceeds the 10MB limit. Choose a smaller file.",
+        "missingContent": "Add at least one file or fill in the record details.",
+        "noDataOrFile": "Add a file or fill in the record details before uploading."
+      },
+      "empty": "No attachments yet.",
+      "noAttachment": "No attachment available",
+      "unknownSize": "Unknown size",
+      "pendingDate": "Date pending"
+    }
+  },
+  "modal": {
+    "close": "Close",
+    "print": "Print",
+    "clinicError": "Unable to load clinic details.",
+    "fields": {
+      "date": "Date:",
+      "appointmentId": "Appointment #:",
+      "pet": "Patient:",
+      "owner": "Owner:",
+      "email": "Email:",
+      "phone": "Phone:",
+      "medication": "Medication / Treatment",
+      "dosage": "Dosage",
+      "frequency": "Frequency",
+      "duration": "Duration",
+      "instructions": "Instructions",
+      "notes": "Notes to owner"
+    },
+    "placeholders": {
+      "dosage": "e.g. 1 dose",
+      "frequency": "e.g. twice a day",
+      "duration": "e.g. 7 days"
+    },
+    "stamp": {
+      "label": "Veterinarian signature / stamp"
+    },
+    "summary": {
+      "title": "Prescription overview"
+    }
+  }
+}

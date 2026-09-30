@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2025-10-23-extend-role-enum
+      author: tasiop6
+      context: default
+      changes:
+        - sql:
+            sql: |
+              ALTER TABLE app_user_roles
+              MODIFY role ENUM('SUPERADMIN','CLINIC_OWNER','STAFF','VET') NOT NULL;
+  - changeSet:
+      id: 2025-10-23-allow-null-owner-pet
+      author: tasiop6
+      context: default
+      changes:
+        - sql:
+            sql: |
+              ALTER TABLE appointments
+              MODIFY owner_id BIGINT NULL;
+        - sql:
+            sql: |
+              ALTER TABLE appointments
+              MODIFY pet_id BIGINT NULL;

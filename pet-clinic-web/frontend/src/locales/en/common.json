@@ -1,0 +1,40 @@
+{
+  "app": {
+    "name": "Happy Tails",
+    "tagline": "Complete pet care"
+  },
+  "actions": {
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "logout": "Log out",
+    "view": "View",
+    "retry": "Retry"
+  },
+  "status": {
+    "active": "Active member",
+    "pending": "Awaiting activation",
+    "noData": "No data available",
+    "loading": "Loading..."
+  },
+  "user": {
+    "anonymous": "User"
+  },
+  "language": {
+    "current": "Current language",
+    "greek": "Greek",
+    "english": "English",
+    "toggleLabel": "Change language"
+  },
+  "errors": {
+    "generic": "Something went wrong.",
+    "notFound": "Not found."
+  },
+  "dates": {
+    "today": "Today",
+    "week": "Week"
+  }
+}

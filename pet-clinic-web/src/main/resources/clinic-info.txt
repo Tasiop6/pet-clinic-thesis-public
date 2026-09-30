@@ -1,0 +1,9 @@
+name=Happy Tails
+vat=
+address=Πεδίον Άρεως
+city=Βόλος
+phone=
+email=tasiop.konst@gmail.com
+website=thesis-tasiopoulos.com
+vetName=Νίκος Δημητρίου
+license=

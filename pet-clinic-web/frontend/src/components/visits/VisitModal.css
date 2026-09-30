@@ -1,0 +1,10 @@
+.visit-form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.visit-form-grid textarea {
+    min-height: 100px;
+    resize: vertical;
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <!-- Override the default Maven settings for this project only -->
+    <profiles>
+        <profile>
+            <id>pet-clinic-build</id>
+            <properties>
+                <!-- Ensure Maven uses Java 17 toolchain when compiling -->
+                <maven.compiler.release>17</maven.compiler.release>
+
+                <!-- Keep snapshot updates fresh for rapid iteration -->
+                <maven.snapshotupdatepolicy>always</maven.snapshotupdatepolicy>
+            </properties>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>pet-clinic-build</activeProfile>
+    </activeProfiles>
+
+</settings>

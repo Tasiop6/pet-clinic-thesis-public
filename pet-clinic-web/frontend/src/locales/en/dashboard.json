@@ -1,0 +1,30 @@
+{
+  "title": "Clinic overview",
+  "description": "Keep an eye on upcoming appointments and ensure contact details stay up to date.",
+  "stats": {
+    "thisWeek": "This week",
+    "today": "Today",
+    "week": "Week",
+    "contactGaps": "Missing contact info",
+    "todayHint": "Confirmed appointments for today.",
+    "weekHint": "Total appointments this week.",
+    "contactHint": "Owners missing phone or email."
+  },
+  "appointments": {
+    "title": "Upcoming appointments",
+    "emptyTitle": "No visits scheduled",
+    "emptyMessage": "Create an appointment to see it here.",
+    "missingEmail": "No email",
+    "missingPhone": "No phone",
+    "fallbackPet": "Visit",
+    "fallbackOwner": "Owner pending"
+  },
+  "reminders": {
+    "title": "Contact reminders",
+    "emptyTitle": "All clear!",
+    "emptyMessage": "All upcoming appointments have complete contact details."
+  },
+  "errors": {
+    "load": "Unable to load dashboard data."
+  }
+}

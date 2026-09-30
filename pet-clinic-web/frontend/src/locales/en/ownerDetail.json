@@ -1,0 +1,175 @@
+{
+  "timeline": {
+    "title": "Health timeline",
+    "empty": "No records yet.",
+    "types": {
+      "visit": "Visit",
+      "weight": "Weight entry",
+      "vaccine": "Vaccine",
+      "lab": "Lab result",
+      "imaging": "Imaging study",
+      "prescription": "Prescription",
+      "note": "Clinical note",
+      "other": "Record"
+    },
+    "metrics": {
+      "weight": "{{value}} kg",
+      "temperature": "{{value}} °C",
+      "heartRate": "{{value}} bpm",
+      "respirationRate": "{{value}} rpm"
+    },
+    "attachments": "Attachment available",
+    "groups": {
+      "weight": "Weight",
+      "vaccine": "Vaccines",
+      "lab": "Bloodwork & labs",
+      "imaging": "Imaging",
+      "prescription": "Prescriptions",
+      "note": "Notes",
+      "visit": "Visits",
+      "other": "Other records"
+    }
+  },
+  "weights": {
+    "title": "Weight & growth",
+    "add": "Log weight",
+    "empty": "No weight entries yet.",
+    "change": "30-day change: {{value}}%",
+    "status": {
+      "stable": "On track",
+      "warning": "Attention: rapid change"
+    }
+  },
+  "quickActions": {
+    "title": "Quick actions",
+    "visit": "New visit",
+    "weight": "Log weight",
+    "vaccine": "Record vaccine",
+    "imaging": "Upload imaging"
+  },
+  "header": {
+    "cityPending": "City pending"
+  },
+  "petSection": {
+    "title": "Pets",
+    "add": "Add pet",
+    "cancel": "Cancel",
+    "emptyTitle": "No pets yet",
+    "emptyMessage": "Add a pet to start building the medical history."
+  },
+  "petForm": {
+    "name": "Name",
+    "birthDate": "Birth date",
+    "speciesLegend": "Species",
+    "editTitle": "Edit Pet",
+    "fetching": "Fetching pet types…",
+    "submit": "Add pet",
+    "submitting": "Saving…",
+    "error": "Unable to add pet.",
+    "success": "Pet added.",
+    "errorNoType": "Select a species to continue.",
+    "update": "Save changes",
+    "updating": "Saving…",
+    "updateSuccess": "Pet details updated.",
+    "updateError": "Unable to update pet.",
+    "typePlaceholder": "Select species",
+    "genderLegend": "Gender",
+    "genderHint": "Helps vets tailor communication and reminders.",
+    "gender": {
+      "male": "Male",
+      "female": "Female"
+    },
+    "genderError": "Select a gender to continue."
+  },
+  "visit": {
+    "new": "New visit",
+    "close": "Close",
+    "fields": {
+      "date": "Visit date",
+      "notes": "Notes",
+      "notesPlaceholder": "Brief description"
+    },
+    "submit": "Log visit",
+    "submitting": "Saving…",
+    "empty": "No visits recorded yet.",
+    "noNotes": "No notes"
+  },
+  "records": {
+    "title": "Medical records",
+    "new": "New record",
+    "cancel": "Cancel",
+    "form": {
+      "type": "Record type",
+      "date": "Date",
+      "title": "Title",
+      "titlePlaceholder": "Optional title",
+      "notes": "Notes",
+      "notesPlaceholder": "Summary or observations",
+      "metrics": {
+        "weight": "Weight (kg)",
+        "temperature": "Temperature (°C)",
+        "heartRate": "Heart rate (bpm)",
+        "respiration": "Respiration (bpm)"
+      },
+      "additional": "Additional metrics",
+      "additionalPlaceholder": "Diet changes, lab values, or other data",
+      "files": "Attach files",
+      "submit": "Save record",
+      "submitting": "Saving…",
+      "update": "Update record"
+    },
+    "feedback": {
+      "success": "Medical record saved.",
+      "removed": "Record removed.",
+      "error": "Unable to save the record.",
+      "deleteError": "Unable to delete the record.",
+      "fileTooLarge": "{{name}} exceeds the 10MB limit. Choose a smaller file.",
+      "missingContent": "Add at least one file or fill in the record details.",
+      "updated": "Medical record updated."
+    },
+    "empty": "No medical records yet.",
+    "recordTitleFallback": "Untitled"
+  },
+  "petCard": {
+    "speciesPending": "Species pending",
+    "birth": "born {{month}}",
+    "gender": {
+      "male": "Male",
+      "female": "Female"
+    }
+  },
+  "preview": {
+    "titleFallback": "Medical record",
+    "noAttachment": "No attachment available.",
+    "openExternal": "Open in new tab",
+    "close": "Close"
+  },
+  "ownerForm": {
+    "title": "Owner details",
+    "subtitle": "Keep contact information current for follow-ups.",
+    "edit": "Edit details",
+    "cancel": "Cancel",
+    "fields": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "address": "Address",
+      "city": "City",
+      "telephone": "Phone",
+      "email": "Email"
+    },
+    "save": "Save changes",
+    "saving": "Saving…",
+    "success": "Owner information updated.",
+    "error": "Unable to update owner.",
+    "pending": "Not provided"
+  },
+  "actions": {
+    "deleteOwner": "Delete owner",
+    "deletingOwner": "Deleting…",
+    "confirmDeleteOwner": "Permanently delete {{name}} and all related pets, appointments, and records?",
+    "deletePet": "Remove pet",
+    "deletingPet": "Removing…",
+    "confirmDeletePet": "Remove {{name}} and all associated history?",
+    "petDeleted": "Pet deleted."
+  }
+}
