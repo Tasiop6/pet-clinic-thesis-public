@@ -330,7 +330,7 @@ export function OwnerDetailPage() {
           message: t("ownerDetail:records.feedback.updated"),
         });
         setRecordModal(null);
-      } catch (error) {
+      } catch {
         // Error handling is done in mutation onError usually, but we set feedback here
       }
     }
