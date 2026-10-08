@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - develop-tasiop
+      - main
     paths:
       - "thesis-overleaf/**"
       - ".github/workflows/build-thesis.yml"
