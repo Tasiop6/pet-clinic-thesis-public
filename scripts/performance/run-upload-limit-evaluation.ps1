@@ -1,5 +1,5 @@
 param(
-    [string]$TargetUrl = 'https://thesis-tasiopoulos.com',
+    [string]$TargetUrl = 'http://localhost',
     [string]$Username = 'perf_eval',
     [string]$PasswordFile = (Join-Path $env:TEMP 'happy-tails-perf-eval.password'),
     [long]$OwnerId = 1,

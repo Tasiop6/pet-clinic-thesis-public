@@ -4,7 +4,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { performance } from "node:perf_hooks";
 import path from "node:path";
 
-const baseUrl = (process.env.TARGET_URL || "https://thesis-tasiopoulos.com").replace(/\/$/, "");
+const baseUrl = process.env.TARGET_URL?.replace(/\/$/, "");
 const username = process.env.TEST_USERNAME;
 const password = process.env.TEST_PASSWORD;
 const concurrency = Number(process.env.CONCURRENCY || 1);
@@ -12,8 +12,8 @@ const durationSeconds = Number(process.env.DURATION_SECONDS || 60);
 const warmupRequests = Number(process.env.WARMUP_REQUESTS || 5);
 const outputDirectory = process.env.RESULTS_DIR || "output/performance";
 
-if (!username || !password) {
-  console.error("Set TEST_USERNAME and TEST_PASSWORD in the current shell. Credentials are never written to results.");
+if (!baseUrl || !username || !password) {
+  console.error("Set TARGET_URL, TEST_USERNAME and TEST_PASSWORD in the current shell. Credentials are never written to results.");
   process.exit(2);
 }
 if (!Number.isInteger(concurrency) || concurrency < 1 || concurrency > 100) {

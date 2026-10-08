@@ -1,5 +1,5 @@
 param(
-    [string]$TargetUrl = 'https://thesis-tasiopoulos.com/',
+    [string]$TargetUrl = 'http://localhost/',
     [int]$TimeoutSeconds = 300,
     [int]$PollSeconds = 2,
     [string]$OutputDirectory = 'output/recovery'

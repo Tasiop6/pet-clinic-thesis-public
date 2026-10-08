@@ -10,7 +10,7 @@ Use a dedicated active staff test account against a frozen application build.
 In PowerShell:
 
 ```powershell
-$env:TARGET_URL = 'https://thesis-tasiopoulos.com'
+$env:TARGET_URL = 'http://localhost'
 $env:TEST_USERNAME = '<test username>'
 $env:TEST_PASSWORD = '<enter locally; do not commit>'
 $env:CONCURRENCY = '1'
@@ -28,5 +28,5 @@ For the first one-user run, the PowerShell wrapper avoids placing the password
 in shell history and clears it from the child-process environment afterwards:
 
 ```powershell
-.\scripts\performance\run-baseline-private.ps1
+.\scripts\performance\run-baseline-private.ps1 -TargetUrl 'http://localhost' -Username '<test username>'
 ```
